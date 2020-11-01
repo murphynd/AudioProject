@@ -63,7 +63,20 @@
 
 ### 📖 Description
 
+- After Reading through this API I think this will be lots of fun but we will need to figure out how to bring C# into this if we want to. its mainly in JS.
+
 "Its actually pretty easy to get some sounds coming out of a web application. The idea is to build something that has an infinite timeline of sound, built using a handful of samples and effects. We'll be using [Web Audio API from Mozilla.](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)"
+
+### 🔍 Examples & Resources
+
+- [Intro Turtorial](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API) we build a simple [boombox](https://codepen.io/Rumyra/pen/qyMzqN/)
+- [Basic Concepts](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API) behind Web Audio API
+
+- [Form](https://css-tricks.com/form-validation-web-audio/) using WebAudio API
+- [Oscillator Node](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode) > a very cool [example](http://mdn.github.io/violent-theremin/)
+- [Media Element Audio Source Node](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode) > example: [this is cool](https://mdn.github.io/webaudio-examples/media-source-buffer/), its moving your mouse around the screen to change things about the media playing
+- [Gain Node](https://developer.mozilla.org/en-US/docs/Web/API/GainNode) > example: [voice-change](https://mdn.github.io/voice-change-o-matic/)
+- [Example Repo](https://github.com/mdn/webaudio-examples/) for WebAudio
 
 ### 🦠 Known Bugs
 
