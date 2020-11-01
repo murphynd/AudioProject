@@ -24,14 +24,14 @@
         </a> 
     </p>
     <!-- Project Shields --> 
-    <p align="center">
+    <!-- <p align="center">
         <a href="https://github.com/murphynd/ParksLookUp/graphs/contributors">
             <img src="https://img.shields.io/github/contributors/LondresRi/CoffeeTrackerAPI.Solution-API-ReadMe-Example.svg?style=plastic">
         </a>
         <a href="https://linkedin.com/in/nataliedoraismurphy">
             <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=plastic&logo=linkedin&colorB=2867B2">
         </a>
-    </p>    
+    </p>     -->
 </p>
 
 <p align="center">
@@ -63,7 +63,7 @@
 
 ### 📖 Description
 
-"Its actually pretty easy to get some sounds coming out of a web application. The idea is to build something that has an infinite timeline of sound, built using a handful of samples and effects. We'll be using Web Audio API from Mozilla."
+"Its actually pretty easy to get some sounds coming out of a web application. The idea is to build something that has an infinite timeline of sound, built using a handful of samples and effects. We'll be using [Web Audio API from Mozilla.](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)"
 
 ### 🦠 Known Bugs
 
