@@ -353,11 +353,11 @@ http://localhost:5000/users/1
 
 ### 🤝 Contributors
 
-| Author                                                       |                    GitHub                     |                              Email                              |
-| ------------------------------------------------------------ | :-------------------------------------------: | :-------------------------------------------------------------: |
-| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
-| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
-| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
+| Author                                                       |                    GitHub                         |                              Email                              |
+| ------------------------------------------------------------ | :------------------------------------------------:| :-------------------------------------------------------------: |
+| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd)     | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
+| [Michael Watts](https://linkedin.com/in/wattsjmichael)       | [Michael Watts](https://github.com/wattsjmichael) | [wattsjmichael@gmail.com](mailto:wattsjmichael@gmail.com)       |
+| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd)     | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
 
 ---
 
