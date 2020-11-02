@@ -353,11 +353,13 @@ http://localhost:5000/users/1
 
 ### 🤝 Contributors
 
+
 | Author                                                       |                    GitHub                     |                              Email                              |
 | ------------------------------------------------------------ | :-------------------------------------------: | :-------------------------------------------------------------: |
-| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
+| [Michael Watts](https://linkedin.com/in/wattsjmichael)       | [Michael Watts](https://github.com/wattsjmichael) | [wattsjmichael@gmail.com](mailto:wattsjmichael@gmail.com)       ||
 | [Grant Eadie](https://linkedin.com/in/granteadie) | [Grant Eadie](https://github.com/granteadie) | [grantleadie@gmail.com](mailto:grantleadie@gmail.com) |
 | [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
+
 
 ---
 
