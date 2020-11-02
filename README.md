@@ -356,7 +356,7 @@ http://localhost:5000/users/1
 | Author                                                       |                    GitHub                     |                              Email                              |
 | ------------------------------------------------------------ | :-------------------------------------------: | :-------------------------------------------------------------: |
 | [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
-| [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
+| [Grant Eadie](https://linkedin.com/in/granteadie) | [Grant Eadie](https://github.com/granteadie) | [grantleadie@gmail.com](mailto:grantleadie@gmail.com) |
 | [Natlie Murphy](https://linkedin.com/in/nataliedoraismurphy) | [Natalie Murphy](https://github.com/murphynd) | [nataliemurphy500@gmail.com](mailto:nataliemurphy500@gmail.com) |
 
 ---
