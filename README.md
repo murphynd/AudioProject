@@ -61,6 +61,12 @@
 
 ## 🌐 About the Project
 
+### New Ideas
+
+- Beat pad idea
+- MVC wiht JS fornt of house
+- sign in with authentication
+
 ### 📖 Description
 
 - After Reading through this API I think this will be lots of fun but we will need to figure out how to bring C# into this if we want to. its mainly in JS.
