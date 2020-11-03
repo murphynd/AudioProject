@@ -21,7 +21,6 @@ namespace AudioProject.Controllers
     {
       _userManager = userManager;
     }
-
     public async Task<IActionResult> Index()
     {
       var admins = (await _userManager
@@ -36,7 +35,6 @@ namespace AudioProject.Controllers
         Administrators = admins,
         Everyone = everyone
       };
-
       return View(model);
     }
   }
