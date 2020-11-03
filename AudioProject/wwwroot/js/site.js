@@ -1,16 +1,27 @@
-﻿let switchSound = "false";
+﻿window.onload = function(){
+
+// start the sound and stuff  
+var context = new AudioContext();
+
+// so you won't start a bunch of sounds
+let switchSound = "false";
+
+// html selectors
 var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
+// Initial synth
 const synth = new Tone.PolySynth();
-const synth1 = new Tone.MembraneSynth();
+
+
+// NEW CONSTRUCTOR CODE 
 
 class Instrument {
   constructor() {
     this.synthType = null;
     this.synth = null;
     this.gain = new Tone.Gain();
-    this.gain.toDestination;
+    this.gain.toDestination();
   }
 
   get defaultSettings() {
@@ -18,7 +29,7 @@ class Instrument {
       Synth: {
         oscillator: { type: 'triangle' },
         envelope:  {
-          attack: 0.05,
+          attack: 0.005,
           decay: 0.1, 
           sustain: 0.3, 
           release: 1 
@@ -28,23 +39,31 @@ class Instrument {
   }
 
   updateSynthType(synthType) {
-    let newSynth = new Tone[synthType](
-      this.defaultSettings[synthType]);
-    console.log(newSynth.envelope.attack);
 
+      // if we already defined this synth
+      if (this.synth) {
+        this.synth.disconnect(this.gain);
+        this.synth.dispose();
+      }
+      let settings = this.defaultSettings[synthType] || {};
+      this.synth = new Tone[synthType](settings);
+      this.synth.connect(this.gain);
+      this.synth.triggerAttackRelease('C4', '16n');
+      console.log(this.synth);
   }
 }
 
-window.onload = function(){
+
 
   startSound.addEventListener('click', function() {
+    context.resume().then(() => {
     if (switchSound === "false"){
 
-      let inst = new Instrument();
-      inst.updateSynthType('Synth');
-
     switchSound = "true";
-    var context = new AudioContext();
+    
+
+    let inst = new Instrument();
+    inst.updateSynthType('Synth');
 
           const $inputs = document.querySelectorAll('input'),
           chords = [
@@ -61,7 +80,7 @@ window.onload = function(){
           let reverb = new Tone.Reverb(2, 0.1);
           gain.toDestination();
           // reverb.connect(gain).toDestination();
-          synth.connect(reverb).connect(gain);
+          // synth.connect(reverb).connect(gain);
           
           
           
@@ -116,6 +135,7 @@ window.onload = function(){
       }
     }
   });
+})
 }
   
   
