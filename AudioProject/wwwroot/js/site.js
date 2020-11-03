@@ -11,7 +11,7 @@ var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
 // Initial synth
-const synth = new Tone.PolySynth();
+// const synth = new Tone.PolySynth();
 
 
 // NEW CONSTRUCTOR CODE 
@@ -20,7 +20,7 @@ class Instrument {
   constructor() {
     this.synthType = null;
     this.synth = null;
-    this.gain = new Tone.Gain();
+    this.gain = new Tone.Gain(0.5);
     this.gain.toDestination();
   }
 
@@ -49,7 +49,6 @@ class Instrument {
       this.synth = new Tone[synthType](settings);
       this.synth.connect(this.gain);
       this.synth.triggerAttackRelease('C4', '16n');
-      console.log(this.synth);
   }
 }
 
@@ -57,14 +56,21 @@ class Instrument {
 
   startSound.addEventListener('click', function() {
     context.resume().then(() => {
-    if (switchSound === "false"){
-
-    switchSound = "true";
     
+      if (switchSound === "false"){
+        switchSound = "true";
+    
+    // receiving inputs
+    let $synthType = $("#synth-type").val();
 
     let inst = new Instrument();
-    inst.updateSynthType('Synth');
+    inst.updateSynthType($synthType);
 
+    $("#synth-type").change(function() {
+      inst.updateSynthType($("#synth-type").val());
+    });
+    
+    
           const $inputs = document.querySelectorAll('input'),
           chords = [
             'G0 C1 E1 B1 C1', 'F1 A1 C1 E2', 'G1 B1 D1', 
@@ -73,16 +79,6 @@ class Instrument {
 
           var chordIdx = 0,
               step = 0;
-          
-          
-          // synth.oscillator.type = 'sine';
-          let gain = new Tone.Gain(0.2);
-          let reverb = new Tone.Reverb(2, 0.1);
-          gain.toDestination();
-          // reverb.connect(gain).toDestination();
-          // synth.connect(reverb).connect(gain);
-          
-          
           
           
 
@@ -103,7 +99,7 @@ class Instrument {
       function onRepeat(time) {
       let chord = chords[chordIdx],
           note = chord[step % chord.length];
-      synth.triggerAttackRelease(note, '32n', time);
+      inst.synth.triggerAttackRelease(note, '32n', time);
       step++;
       }
 
@@ -124,18 +120,18 @@ class Instrument {
 
         mute.onclick = function() {
           if(mute.getAttribute('data-muted') === 'false') {
-            gain.gain.rampTo(0);
+            inst.gain.gain.rampTo(0);
             mute.setAttribute('data-muted', 'true');
             mute.innerHTML = "unmute";
           } else {
-            gain.gain.rampTo(0.6);
+            inst.gain.gain.rampTo(0.5);
             mute.setAttribute('data-muted', 'false');
             mute.innerHTML = "mute";
           };
+        }
       }
-    }
-  });
-})
+    });
+  })
 }
   
   
