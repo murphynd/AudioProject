@@ -1,0 +1,41 @@
+.hiddenOverflow {
+  overflow: hidden;
+}
+.hiddenOverflow input {
+  position: absolute;
+  left: -999999px;
+}
+.hiddenOverflow input#chord-1:checked ~ ul label[for=chord-1] {
+  background: tomato;
+}
+.hiddenOverflow input#chord-2:checked ~ ul label[for=chord-2] {
+  background: tomato;
+}
+.hiddenOverflow input#chord-3:checked ~ ul label[for=chord-3] {
+  background: tomato;
+}
+.hiddenOverflow input#chord-4:checked ~ ul label[for=chord-4] {
+  background: tomato;
+}
+.hiddenOverflow input#chord-5:checked ~ ul label[for=chord-5] {
+  background: tomato;
+}
+.hiddenOverflow ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.hiddenOverflow ul li {
+  flex: 1;
+}
+.hiddenOverflow ul li label {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5rem;
+  background: black;
+  color: white;
+}
+
+/*# sourceMappingURL=output.css.map */
