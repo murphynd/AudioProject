@@ -18,9 +18,7 @@ namespace AudioProject
           .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
-
     public IConfigurationRoot Configuration { get; set; }
-
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddMvc();
@@ -43,23 +41,17 @@ namespace AudioProject
         options.Password.RequiredUniqueChars = 0;
     });
     }
-
     public void Configure(IApplicationBuilder app)
     {
       app.UseStaticFiles();
-
       app.UseDeveloperExceptionPage();
-
-      //new code
       app.UseAuthentication();
-
       app.UseMvc(routes =>
       {
         routes.MapRoute(
           name: "default",
           template: "{controller=Home}/{action=Index}/{id?}");
       });
-
       app.Run(async (context) =>
       {
         await context.Response.WriteAsync("Something went wrong!");
