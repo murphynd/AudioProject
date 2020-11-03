@@ -37,94 +37,71 @@ a:hover {
   background-size:cover;
 }
 
-.button {
-  background-color: 	rgb(171, 190, 82); 
-  fill: white;
-  border: solid .25px white;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
+
+.dot0 {
+  height: 100px;
+  width: 100px;
+  background-color: grey;
+  border-radius: 50%;
   display: inline-block;
-  font-size: 16px;
 }
-.button1 {
-  background-color: 	rgb(155, 172, 82);
-  fill:white;
-  border: solid .25px white;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+
+.dot0 {
+  transition-duration: 0.4s;
 }
-.button2 {
-  background-color: 	rgb(130, 172, 82);
-  fill:white;
-  border: solid .25px white;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-.button3 {
-  background-color: 	rgb(100, 172, 82);
-  fill:white;
-  border: solid .25px white;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+
+.dot0:hover {
+  background-color:lightblue;
   cursor:pointer;
 }
 
-.button {
+.dot1 {
+  height: 100px;
+  width: 100px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot1 {
   transition-duration: 0.4s;
 }
 
-.button:hover {
-  background-color: white;
+.dot1:hover {
+  background-color:lightpink;
   cursor:pointer;
-  border: solid .25px rgb(171, 172, 82);
-  color: rgb(171, 172, 82);
-  fill: rgb(171, 172, 82);
 }
 
-.button1 {
+.dot2 {
+  height: 100px;
+  width: 100px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot2 {
   transition-duration: 0.4s;
 }
 
-.button1:hover {
-  background-color: white;
-  border: solid .25px rgb(155, 172, 82);
-  color: rgb(155, 172, 82);
-  fill: rgb(155, 172, 82);
+.dot2:hover {
+  background-color:blue;
+  cursor:pointer;
 }
 
-.button2 {
+.dot3 {
+  height: 100px;
+  width: 100px;
+  background-color: grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot3 {
   transition-duration: 0.4s;
 }
 
-.button2:hover {
-  background-color: white;
-  border: solid .25px rgb(130, 172, 82);
-  color: rgb(130, 172, 82);
-  fill: rgb(130, 172, 82);
+.dot3:hover {
+  background-color:lightgreen;
+  cursor:pointer;
 }
-
-.button3 {
-  transition-duration: 0.4s;
-}
-
-.button3:hover {
-  background-color: white;
-  border: solid .25px rgb(100, 172, 82);
-  color: rgb(100, 172, 82);
-  fill: rgb(100, 172, 82);
-}
-
