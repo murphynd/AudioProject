@@ -1,25 +1,71 @@
-﻿var mute = document.querySelector('#mute');
+﻿let switchSound = "false";
+var startSound = document.querySelector('#startsound');
+var mute = document.querySelector('#mute');
+
+const synth = new Tone.PolySynth();
+const synth1 = new Tone.MembraneSynth();
+
+class Instrument {
+  constructor() {
+    this.synthType = null;
+    this.synth = null;
+    this.gain = new Tone.Gain();
+    this.gain.toDestination;
+  }
+
+  get defaultSettings() {
+    return {
+      Synth: {
+        oscillator: { type: 'triangle' },
+        envelope:  {
+          attack: 0.05,
+          decay: 0.1, 
+          sustain: 0.3, 
+          release: 1 
+        }
+      }
+    };
+  }
+
+  updateSynthType(synthType) {
+    let newSynth = new Tone[synthType](
+      this.defaultSettings[synthType]);
+    console.log(newSynth.envelope.attack);
+
+  }
+}
 
 window.onload = function(){
 
-  document.querySelector('#startsound').addEventListener('click', function() {
+  startSound.addEventListener('click', function() {
+    if (switchSound === "false"){
+
+      let inst = new Instrument();
+      inst.updateSynthType('Synth');
+
+    switchSound = "true";
     var context = new AudioContext();
 
           const $inputs = document.querySelectorAll('input'),
           chords = [
-            'G0 C1 E1 B1 C1', 'F1 A1 C1', 'G1 B1 D1', 
-            'D1 F1 A1', 'E1 G1 B1'
+            'G0 C1 E1 B1 C1', 'F1 A1 C1 E2', 'G1 B1 D1', 
+            'D1 F1 A1 C2', 'E1 G1 B1'
           ].map(formatChords);
 
           var chordIdx = 0,
               step = 0;
-
-          const synth = new Tone.Synth();
-          synth.oscillator.type = 'sine';
-          gain = new Tone.Gain(0.6);
-          reverb = new Tone.Reverb(5, 0.1);
+          
+          
+          // synth.oscillator.type = 'sine';
+          let gain = new Tone.Gain(0.2);
+          let reverb = new Tone.Reverb(2, 0.1);
           gain.toDestination();
-          synth.connect(gain);
+          // reverb.connect(gain).toDestination();
+          synth.connect(reverb).connect(gain);
+          
+          
+          
+          
 
       Array.from($inputs).forEach($input => {
       $input.addEventListener('change', () => {
@@ -38,7 +84,7 @@ window.onload = function(){
       function onRepeat(time) {
       let chord = chords[chordIdx],
           note = chord[step % chord.length];
-      synth.triggerAttackRelease(note, '16n', time);
+      synth.triggerAttackRelease(note, '32n', time);
       step++;
       }
 
@@ -49,7 +95,7 @@ window.onload = function(){
           for (let j = 0; j < chord.length; j++){
             let noteOct = chord[j].split('')
                 note = noteOct[0];
-            let oct = (noteOct[1] === "0") ? i + 4 : i + 3;
+            let oct = (noteOct[1] === "0") ? i + 2 : i + 4;
             note += oct;
             arr.push(note);
           }
@@ -59,16 +105,18 @@ window.onload = function(){
 
         mute.onclick = function() {
           if(mute.getAttribute('data-muted') === 'false') {
-            synth.disconnect(gain);
+            gain.gain.rampTo(0);
             mute.setAttribute('data-muted', 'true');
-            mute.innerHTML = "Unmute";
+            mute.innerHTML = "unmute";
           } else {
-            synth.connect(gain);
+            gain.gain.rampTo(0.6);
             mute.setAttribute('data-muted', 'false');
-            mute.innerHTML = "Mute";
+            mute.innerHTML = "mute";
           };
       }
-    });
-  
+    }
+  });
 }
+  
+  
 
