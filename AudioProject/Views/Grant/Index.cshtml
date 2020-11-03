@@ -6,13 +6,27 @@
 
 <br><br>
 
-<button onclick="beginTone()" class="btn btn-outline-info">TONE.JS</button>
-<br>
+<button id="startsound" class="btn btn-outline-dark btn-block">begin audio</button>
+
 <br><br><br>
-<span onclick="beginTone1()" class="dot0"></span>
 
-<span onclick="beginTone2()" class="dot1"></span>
+<h3 style="text-align:center">select chords</h3><hr> <br>
+<div class="hiddenOverflow">
+  <input id="chord-1" value="1" type="radio" name="chord"/>
+  <input id="chord-2" value="2" type="radio" name="chord"/>
+  <input id="chord-3" value="3" type="radio" name="chord"/>
+  <input id="chord-4" value="4" type="radio" name="chord"/>
+  <input id="chord-5" value="5" type="radio" name="chord"/>
 
-<span onclick="beginTone3()" class="dot2"></span>
 
-<span onclick="beginTone4()" class="dot3"></span>
+  <ul>
+    <li><label for="chord-1">1</label></li>
+    <li><label for="chord-2">2</label></li>
+    <li><label for="chord-3">3</label></li>
+    <li><label for="chord-4">4</label></li>
+    <li><label for="chord-5">5</label></li>
+  </ul>
+</div><br><br>
+
+<p id="mute" data-muted="false" class="btn btn-outline-dark btn-block">mute</p>
+
