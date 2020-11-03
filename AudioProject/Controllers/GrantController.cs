@@ -24,5 +24,11 @@ namespace AudioProject.Controllers
     {
       return View();
     }
+    public ActionResult add(Sounds sounds)
+    {
+      _db.Sounds.Add(sounds);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

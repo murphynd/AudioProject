@@ -3,14 +3,16 @@ using System;
 using AudioProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AudioProject.Migrations
 {
     [DbContext(typeof(AudioProjectContext))]
-    partial class AudioProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20201103222540_sounds")]
+    partial class sounds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

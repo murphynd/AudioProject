@@ -5,7 +5,8 @@ namespace AudioProject.Models
 {
   public class AudioProjectContext : IdentityDbContext<ApplicationUser>
   {
-    public AudioProjectContext(DbContextOptions options) : base (options) { }
+    public virtual DbSet<Sounds> Sounds { get; set; }
+    public AudioProjectContext(DbContextOptions options) : base(options) { }
 
   }
 }
