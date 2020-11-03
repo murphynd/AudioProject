@@ -11,7 +11,7 @@ var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
 // Initial synth
-// const synth = new Tone.PolySynth();
+const reverb = new Tone.Reverb(5, 0.1);
 
 
 // NEW CONSTRUCTOR CODE 
@@ -91,7 +91,10 @@ class Instrument {
       function handleChord(valueString) {
       chordIdx = parseInt(valueString) - 1;
       }
+      
 
+      reverb.toDestination();
+      inst.gain.connect(reverb);
       Tone.Transport.scheduleRepeat(onRepeat, '16n');
       Tone.Transport.bpm.value = 100;  
       Tone.Transport.start();
