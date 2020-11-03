@@ -71,55 +71,19 @@
 
 // GRANT CODE 
 
-// let play, 
-//     oscillator, 
-//     changefreq, 
-//     changetype
-
-// let oscProp = {
-//   type: "sine",
-//   frequency: 500,
-//   playing: false
-// }
-
-
-
-// let audioContext = new AudioContext();
-
 let beginTone;
+let beginTone1;
+let beginTone2;
+let beginTone3;
+const reverb = new Tone.Reverb(10, 0.1).toDestination();
+
+
 
 window.onload = function(){
 
-  // play = function(){
-  //   if(oscProp.playing) {
-  //     oscillator.stop();
-  //     oscProp.playing = false;
-  //   }
-  //   else {
-  //     oscillator = audioContext.createOscillator();
-  //     oscillator.type = oscProp.type;
-  //     oscillator.frequency.setValueAtTime(oscProp.frequency, audioContext.currentTime);
-  //     oscillator.connect(audioContext.destination);
-  //     oscillator.start();
-  //     oscProp.playing = true;
-  //   }
-  // }
-
-  // changefreq = function(){
-  //   oscProp.frequency = document.getElementById("freqslider").value * 10;
-  //   play();
-  //   play();
-  // }
-
-  // changetype = function(){
-  //   oscProp.type = document.querySelector("input[name = 'waveform']:checked").value;
-  //   play();
-  //   play();
-  // }
-
     beginTone1 = function() {
 
-      const osc = new Tone.Synth("C5", "triangle").toDestination();
+      const osc = new Tone.Synth("triangle").toDestination();
       const reverb = new Tone.Reverb(10, 0.1).toDestination();
       const now = Tone.now()
   
@@ -137,14 +101,10 @@ window.onload = function(){
 
     beginTone2 = function() {
 
-      const osc = new Tone.Synth("triangle").toDestination();
-      const reverb = new Tone.Reverb(10, 0.1).toDestination();
+      const osc = new Tone.MembraneSynth().toDestination();
+      const reverb = new Tone.Reverb(5, 0.1).toDestination();
       const now = Tone.now()
-
-  osc.triggerAttack("C1", now)
-  osc.triggerRelease(now + 1)
-  osc.frequency.rampTo("C5", 1);
-  const filter = new Tone.Filter(600,).toDestination();
+  osc.triggerAttackRelease("C3")
   const feedbackDelay = new Tone.FeedbackDelay(0.25, 0.1).toDestination();
 
   // connect the player to the feedback delay and filter in parallel
