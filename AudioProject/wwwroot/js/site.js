@@ -20,7 +20,7 @@ class Instrument {
   constructor() {
     this.synthType = null;
     this.synth = null;
-    this.gain = new Tone.Gain(0.5);
+    this.gain = new Tone.Gain(0.2);
     this.gain.toDestination();
   }
 
@@ -85,6 +85,10 @@ class Instrument {
     };
   }
 
+  updateOscillatorType(oscillatorType) {
+    this.synth.oscillator.type = oscillatorType;
+  }
+
   updateSynthType(synthType) {
 
       // if we already defined this synth
@@ -117,7 +121,7 @@ class Instrument {
       inst.updateSynthType($("#synth-type").val());
     });
     $("#oscillator-type").change(function() {
-
+      inst.updateOscillatorType($("#oscillator-type").val());
     });
     
     
@@ -175,7 +179,7 @@ class Instrument {
             mute.setAttribute('data-muted', 'true');
             mute.innerHTML = "unmute";
           } else {
-            inst.gain.gain.rampTo(0.5);
+            inst.gain.gain.rampTo(0.2);
             mute.setAttribute('data-muted', 'false');
             mute.innerHTML = "mute";
           };
