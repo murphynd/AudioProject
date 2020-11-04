@@ -11,21 +11,21 @@ var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
 // Reverb
-let reverb = new Tone.Reverb(3, 0.1, 0);
+let reverb = new Tone.Reverb(0.1, 0.1, 0);
 
 function reverbWet(wetAmount) {
   reverb.decay = wetAmount/10;
 }
 
 // Delay
-let delay = new Tone.FeedbackDelay(0.1, 0.5);
+let delay = new Tone.FeedbackDelay(0.01, 0.5);
 
 function delayWet(wetAmount) {
   delay.delayTime.value = wetAmount/100;
 }
 
 // Filter
-let filter = new Tone.Filter(200, "lowpass");
+let filter = new Tone.Filter(5000, "lowpass");
 
 function filterWet(wetAmount) {
   filter.frequency.value = wetAmount;
@@ -147,7 +147,6 @@ class Instrument {
       inst.updateSynthType($("#SynthType").val());
     });
     $("#OscillatorType").change(function() {
-
       inst.updateOscillatorType($("#OscillatorType").val(), $("#OscillatorPartials").val());
     });
     $("#OscillatorPartials").change(function() {
@@ -175,8 +174,6 @@ class Instrument {
     function updateBPM(speed) {
       Tone.Transport.bpm.value = speed;  
     }
-    
-    
           const $inputs = document.querySelectorAll('input'),
           chords = [
             'G0 C1 E1 D1 B1', 'F0 A1 C1 E1 F1', 'G0 B1 D1 F2 D2', 
