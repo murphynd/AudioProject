@@ -11,15 +11,15 @@ using System.Security.Claims;
 
 namespace AudioProject.Controllers
 {
-  public class GrantController : Controller
+  public class ToneController : Controller
   {
     private readonly AudioProjectContext _db;
 
-    public GrantController(AudioProjectContext db)
+    public ToneController(AudioProjectContext db)
     {
       _db = db;
     }
-
+    [HttpGet("/")]
     public ActionResult Index()
     {
       return View();
