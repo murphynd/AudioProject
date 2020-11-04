@@ -188,3 +188,10 @@ class Instrument {
     });
   })
 }
+
+
+// Grant - change the attack, delay, reverb, distortion, volume - create nobs 
+// Natalie - figure out how to connect settings from synth to library, (save sound settings (update sounds database these praramerterchange the attack, delay, reverb, distortion, volume))
+// Michael - Connect site to a visualizer, and settings for it. Maybe webgl? I did ask in stackoverflow. 
+
+// streach = 
