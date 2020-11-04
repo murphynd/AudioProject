@@ -19,15 +19,15 @@ namespace AudioProject.Controllers
     {
       _db = db;
     }
-    [HttpGet("/")]
+    [HttpGet]
     public ActionResult Index()
     {
       return View();
     }
-    [HttpPost("/save")]
-    public ActionResult save(Sounds sounds)
+    [HttpPost]
+    public ActionResult Index(Sounds sound)
     {
-      _db.Sounds.Add(sounds);
+      _db.Sounds.Add(sound);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
