@@ -8,25 +8,35 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using System;
+
 
 namespace AudioProject.Controllers
 {
-  public class GrantController : Controller
+  [Authorize]
+  public class ToneController : Controller
   {
     private readonly AudioProjectContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public GrantController(AudioProjectContext db)
+    public ToneController(UserManager<ApplicationUser> userManager, AudioProjectContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
-
+    [HttpGet]
     public ActionResult Index()
     {
       return View();
     }
-    public ActionResult add(Sounds sounds)
+    
+    [HttpPost]
+    public async Task<ActionResult> Index(Sounds sound)
     {
-      _db.Sounds.Add(sounds);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      sound.User = currentUser;
+      _db.Sounds.Add(sound);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

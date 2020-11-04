@@ -11,23 +11,21 @@ var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
 // Reverb
-let reverb = new Tone.Reverb(3, 0.1, 0);
+let reverb = new Tone.Reverb(0.1, 0.1, 0);
 
 function reverbWet(wetAmount) {
   reverb.decay = wetAmount/10;
-  console.log(reverb.decay)
 }
 
 // Delay
-let delay = new Tone.FeedbackDelay(0.1, 0.5);
+let delay = new Tone.FeedbackDelay(0.01, 0.5);
 
 function delayWet(wetAmount) {
   delay.delayTime.value = wetAmount/100;
-  console.log(delay.delayTime.value);
 }
 
 // Filter
-let filter = new Tone.Filter(200, "lowpass");
+let filter = new Tone.Filter(5000, "lowpass");
 
 function filterWet(wetAmount) {
   filter.frequency.value = wetAmount;
@@ -137,48 +135,45 @@ class Instrument {
         switchSound = "true";
     
     // receiving inputs
-    let $synthType = $("#synth-type").val();
-    let $oscillatorType = $("#oscillator-type").val();
-    let $oscillatorPartials = $("#oscillator-partials").val();
+    let $synthType = $("#SynthType").val();
+    let $oscillatorType = $("#OscillatorType").val();
+    let $oscillatorPartials = $("#OscillatorPartials").val();
 
     let inst = new Instrument();
     inst.updateSynthType($synthType);
     inst.updateOscillatorType($oscillatorType, $oscillatorPartials)
 
-    $("#synth-type").change(function() {
-      inst.updateSynthType($("#synth-type").val());
+    $("#SynthType").change(function() {
+      inst.updateSynthType($("#SynthType").val());
     });
-    $("#oscillator-type").change(function() {
+    $("#OscillatorType").change(function() {
+      inst.updateOscillatorType($("#OscillatorType").val(), $("#OscillatorPartials").val());
+    });
+    $("#OscillatorPartials").change(function() {
+      inst.updateOscillatorType($("#OscillatorType").val(), $("#OscillatorPartials").val());
+    });
+    $("#BPMOutput").on('input', function() {
+      updateBPM($("#BPMOutput").val());
+      $('span#bpm-output').text($("#BPMOutput").val());
+    });
+    $("#ReverbOutput").on('input', function() {
+      reverbWet($("#ReverbOutput").val());
+      $('span#reverb-output').text($("#ReverbOutput").val() - 3);
+    });
+    $("#FilterOutput").on('input', function() {
+      filterWet($("#FilterOutput").val()); 
+      $('span#filter-output').text($("#FilterOutput").val());
 
-      inst.updateOscillatorType($("#oscillator-type").val(), $("#oscillator-partials").val());
     });
-    $("#oscillator-partials").change(function() {
-      inst.updateOscillatorType($("#oscillator-type").val(), $("#oscillator-partials").val());
-    });
-    $("#bpm-speed").on('input', function() {
-      updateBPM($("#bpm-speed").val());
-      $('span#bpm-output').text($("#bpm-speed").val());
-    });
-    $("#reverb-wet").on('input', function() {
-      reverbWet($("#reverb-wet").val());
-      $('span#reverb-output').text($("#reverb-wet").val() - 3);
-    });
-    $("#filter-wet").on('input', function() {
-      filterWet($("#filter-wet").val()); 
-      $('span#filter-output').text($("#filter-wet").val());
-
-    });
-    $("#delay-wet").on('input', function() {
-      delayWet($("#delay-wet").val()); 
-      $('span#delay-output').text($("#delay-wet").val());
+    $("#DelayOutput").on('input', function() {
+      delayWet($("#DelayOutput").val()); 
+      $('span#delay-output').text($("#DelayOutput").val());
     });
     
 
     function updateBPM(speed) {
       Tone.Transport.bpm.value = speed;  
     }
-    
-    
           const $inputs = document.querySelectorAll('input'),
           chords = [
             'G0 C1 E1 D1 B1', 'F0 A1 C1 E1 F1', 'G0 B1 D1 F2 D2', 
