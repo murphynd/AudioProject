@@ -24,7 +24,8 @@ namespace AudioProject.Controllers
     {
       return View();
     }
-    public ActionResult add(Sounds sounds)
+    [HttpPost("/save")]
+    public ActionResult save(Sounds sounds)
     {
       _db.Sounds.Add(sounds);
       _db.SaveChanges();
