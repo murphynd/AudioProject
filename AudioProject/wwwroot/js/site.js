@@ -10,8 +10,28 @@ let switchSound = "false";
 var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
-// Initial synth
-const reverb = new Tone.Reverb(10, 0.1);
+// Reverb
+let reverb = new Tone.Reverb(3, 0.1, 0);
+
+function reverbWet(wetAmount) {
+  reverb.decay = wetAmount/10;
+  console.log(reverb.decay)
+}
+
+// Delay
+let delay = new Tone.FeedbackDelay(0.1, 0.5);
+
+function delayWet(wetAmount) {
+  delay.delayTime.value = wetAmount/100;
+  console.log(delay.delayTime.value);
+}
+
+// Filter
+let filter = new Tone.Filter(200, "lowpass");
+
+function filterWet(wetAmount) {
+  filter.frequency.value = wetAmount;
+}
 
 
 // NEW CONSTRUCTOR CODE 
@@ -21,7 +41,7 @@ class Instrument {
     this.synthType = null;
     this.synth = null;
     this.gain = new Tone.Gain(0.5);
-    this.gain.toDestination();
+    this.gain;
   }
 
   get defaultSettings() {
@@ -96,6 +116,11 @@ class Instrument {
       this.synth = new Tone[synthType](settings);
       this.synth.connect(this.gain);
   }
+
+  updateOscillatorType(oscillatorType, oscillatorPartials) {
+    let partials = oscillatorPartials === 'none' ? '' : oscillatorPartials;
+    this.synth.oscillator.type = `${oscillatorType}${partials}`;
+  }
 }
 
 
@@ -109,22 +134,48 @@ class Instrument {
     // receiving inputs
     let $synthType = $("#synth-type").val();
     let $oscillatorType = $("#oscillator-type").val();
+    let $oscillatorPartials = $("#oscillator-partials").val();
 
     let inst = new Instrument();
     inst.updateSynthType($synthType);
+    inst.updateOscillatorType($oscillatorType, $oscillatorPartials)
 
     $("#synth-type").change(function() {
       inst.updateSynthType($("#synth-type").val());
     });
     $("#oscillator-type").change(function() {
-
+      inst.updateOscillatorType($("#oscillator-type").val(), $("#oscillator-partials").val());
     });
+    $("#oscillator-partials").change(function() {
+      inst.updateOscillatorType($("#oscillator-type").val(), $("#oscillator-partials").val());
+    });
+    $("#bpm-speed").on('input', function() {
+      updateBPM($("#bpm-speed").val());
+      $('span#bpm-output').text($("#bpm-speed").val());
+    });
+    $("#reverb-wet").on('input', function() {
+      reverbWet($("#reverb-wet").val());
+      $('span#reverb-output').text($("#reverb-wet").val() - 3);
+    });
+    $("#filter-wet").on('input', function() {
+      filterWet($("#filter-wet").val()); 
+      $('span#filter-output').text($("#filter-wet").val());
+    });
+    $("#delay-wet").on('input', function() {
+      delayWet($("#delay-wet").val()); 
+      $('span#delay-output').text($("#delay-wet").val());
+    });
+    
+
+    function updateBPM(speed) {
+      Tone.Transport.bpm.value = speed;  
+    }
     
     
           const $inputs = document.querySelectorAll('input'),
           chords = [
-            'G0 C1 E1 B1 C1', 'F0 A1 C1 E2', 'G0 B1 D1 F2 D2', 
-            'D1 F1 A1 C2', 'E1 G1 B1'
+            'G0 C1 E1 D1 B1', 'F0 A1 C1 E1 F1', 'G0 B1 D1 F2 D2', 
+            'D1 F1 A1 C2 D0', 'E1 G1 B1'
           ].map(formatChords);
 
           var chordIdx = 0,
@@ -140,11 +191,9 @@ class Instrument {
       chordIdx = parseInt(valueString) - 1;
       }
       
-
-      reverb.toDestination();
-      inst.gain.connect(reverb);
+      inst.gain.chain(reverb, filter, delay, Tone.Destination);
       Tone.Transport.scheduleRepeat(onRepeat, '16n');
-      Tone.Transport.bpm.value = 100;  
+      
       Tone.Transport.start();
 
       function onRepeat(time) {
