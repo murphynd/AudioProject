@@ -147,8 +147,7 @@ class Instrument {
       inst.updateSynthType($("#SynthType").val());
     });
     $("#OscillatorType").change(function() {
-
-      inst.updateOscillatorType($("#OscillatorType").val(), $("#OscillatorPartials").val());
+      inst.updateOscillatorType($("#OscillatorType").val(), $("#OscillatorType").val());
     });
     $("#OscillatorPartials").change(function() {
       inst.updateOscillatorType($("#OscillatorType").val(), $("#OscillatorPartials").val());
@@ -175,8 +174,6 @@ class Instrument {
     function updateBPM(speed) {
       Tone.Transport.bpm.value = speed;  
     }
-    
-    
           const $inputs = document.querySelectorAll('input'),
           chords = [
             'G0 C1 E1 D1 B1', 'F0 A1 C1 E1 F1', 'G0 B1 D1 F2 D2', 

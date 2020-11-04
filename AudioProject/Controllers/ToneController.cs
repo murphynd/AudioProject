@@ -11,6 +11,7 @@ using System.Security.Claims;
 
 namespace AudioProject.Controllers
 {
+  [Authorize]
   public class ToneController : Controller
   {
     private readonly AudioProjectContext _db;
