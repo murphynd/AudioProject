@@ -52,12 +52,49 @@
         <option value="sawtooth">sawtooth</option>
         <option value="sine">sine</option>
         <option value="square">square</option>
-        <option value="pulse">pulse</option>
       </select>
     </span>
   </section>
+</div><br>
+
+<div class="field">
+  <select id="oscillator-partials" class="form-control">
+    <option value="none">none</option>
+    <option value="2">2</option>
+    <option value="4">4</option>
+    <option value="8">8</option>
+    <option value="16">16</option>
+    <option value="32">32</option>
+    <option value="64">64</option>
+  </select>
 </div>
+<br><br>
+<p>Volume: <span id="volume-output"></span></p>
+  <div class="slidecontainer">
+    <input type="range" min="50" max="100" value="80" class="slider" id="volume-wet">
+  </div>
 <br>
+<p>Filter: <span id="filter-output"></span></p>
+  <div class="slidecontainer">
+    <input type="range" min="20" max="10000" value="0" class="slider" id="filter-wet">
+  </div>
+<br>
+<p>Delay: <span id="delay-output"></span></p>
+  <div class="slidecontainer">
+    <input type="range" min="0" max="100" value="0" class="slider" id="delay-wet">
+  </div>
+<br>
+<p>Room Size: <span id="reverb-output"></span></p>
+  <div class="slidecontainer">
+    <input type="range" min="3" max="200" value="0" class="slider" id="reverb-wet">
+  </div>
+<br>
+<p>BPM: <span id="bpm-output"></span></p>
+  <div class="slidecontainer">
+    <input type="range" min="20" max="1000" value="100" class="slider" id="bpm-speed">
+  </div>
+<br>
+
 
 <p id="mute" data-muted="false" class="btn btn-outline-dark btn-block">mute</p>
 
