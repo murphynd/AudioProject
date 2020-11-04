@@ -10,6 +10,8 @@ let switchSound = "false";
 var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
+
+
 // Reverb
 let reverb = new Tone.Reverb(3, 0.1, 0);
 
@@ -32,6 +34,7 @@ let filter = new Tone.Filter(200, "lowpass");
 function filterWet(wetAmount) {
   filter.frequency.value = wetAmount;
 }
+
 
 
 // NEW CONSTRUCTOR CODE 
@@ -149,6 +152,7 @@ class Instrument {
     $("#oscillator-partials").change(function() {
       inst.updateOscillatorType($("#oscillator-type").val(), $("#oscillator-partials").val());
     });
+    
     $("#bpm-speed").on('input', function() {
       updateBPM($("#bpm-speed").val());
       $('span#bpm-output').text($("#bpm-speed").val());
