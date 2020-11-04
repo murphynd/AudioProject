@@ -108,12 +108,16 @@ class Instrument {
     
     // receiving inputs
     let $synthType = $("#synth-type").val();
+    let $oscillatorType = $("#oscillator-type").val();
 
     let inst = new Instrument();
     inst.updateSynthType($synthType);
 
     $("#synth-type").change(function() {
       inst.updateSynthType($("#synth-type").val());
+    });
+    $("#oscillator-type").change(function() {
+
     });
     
     
