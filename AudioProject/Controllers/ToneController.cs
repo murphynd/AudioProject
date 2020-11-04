@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using System;
+
 
 namespace AudioProject.Controllers
 {
@@ -15,9 +17,11 @@ namespace AudioProject.Controllers
   public class ToneController : Controller
   {
     private readonly AudioProjectContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public ToneController(AudioProjectContext db)
+    public ToneController(UserManager<ApplicationUser> userManager, AudioProjectContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
     [HttpGet]
@@ -25,9 +29,13 @@ namespace AudioProject.Controllers
     {
       return View();
     }
+    
     [HttpPost]
-    public ActionResult Index(Sounds sound)
+    public async Task<ActionResult> Index(Sounds sound)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      sound.User = currentUser;
       _db.Sounds.Add(sound);
       _db.SaveChanges();
       return RedirectToAction("Index");
