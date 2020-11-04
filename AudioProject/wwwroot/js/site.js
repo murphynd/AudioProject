@@ -11,7 +11,7 @@ var startSound = document.querySelector('#startsound');
 var mute = document.querySelector('#mute');
 
 // Initial synth
-const reverb = new Tone.Reverb(5, 0.1);
+const reverb = new Tone.Reverb(10, 0.1);
 
 
 // NEW CONSTRUCTOR CODE 
@@ -34,7 +34,54 @@ class Instrument {
           sustain: 0.3, 
           release: 1 
         }
+      },
+      AMSynth: {
+        harmonicity: 3,
+        detune: 0,
+        oscillator: {
+          type: "sine"
+        },
+        envelope: {
+          attack: 0.01,
+          decay: 0.01,
+          sustain: 1,
+          release: 0.5
+        },
+        modulation: {
+          type: "square"
+        },
+        modulationEnvelope: {
+          attack: 0.01,
+          decay: 0,
+          sustain: 1,
+          release: 0.5
+        }
+      },
+
+      FMSynth: {
+        harmonicity: 3,
+        modulationIndex: 10,
+        detune: 0,
+        oscillator: {
+          type: "sine"
+        },
+        envelope: {
+          attack: 0.01,
+          decay: 0.01,
+          sustain: 1,
+          release: 0.5
+        },
+        modulation: {
+          type: "square"
+        },
+        modulationEnvelope: {
+          attack: 0.01,
+          decay: 0,
+          sustain: 1,
+          release: 0.5
+        }
       }
+
     };
   }
 
@@ -48,7 +95,6 @@ class Instrument {
       let settings = this.defaultSettings[synthType] || {};
       this.synth = new Tone[synthType](settings);
       this.synth.connect(this.gain);
-      this.synth.triggerAttackRelease('C4', '16n');
   }
 }
 
@@ -62,6 +108,7 @@ class Instrument {
     
     // receiving inputs
     let $synthType = $("#synth-type").val();
+    let $oscillatorType = $("#oscillator-type").val();
 
     let inst = new Instrument();
     inst.updateSynthType($synthType);
@@ -69,18 +116,19 @@ class Instrument {
     $("#synth-type").change(function() {
       inst.updateSynthType($("#synth-type").val());
     });
+    $("#oscillator-type").change(function() {
+
+    });
     
     
           const $inputs = document.querySelectorAll('input'),
           chords = [
-            'G0 C1 E1 B1 C1', 'F1 A1 C1 E2', 'G1 B1 D1', 
+            'G0 C1 E1 B1 C1', 'F0 A1 C1 E2', 'G0 B1 D1 F2 D2', 
             'D1 F1 A1 C2', 'E1 G1 B1'
           ].map(formatChords);
 
           var chordIdx = 0,
               step = 0;
-          
-          
 
       Array.from($inputs).forEach($input => {
       $input.addEventListener('change', () => {
@@ -136,6 +184,3 @@ class Instrument {
     });
   })
 }
-  
-  
-
