@@ -22,4 +22,4 @@ mediaRecorder.ondataavailable = function(e) {
 };
 
 mediaRecorder.start();
-setTimeout(function() {mediaRecorder.stop(); }, 10000);
+setTimeout(function() {mediaRecorder.stop(); }, 5000);
