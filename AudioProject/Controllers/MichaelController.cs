@@ -28,5 +28,9 @@ namespace AudioProject.Controllers
     {
       return View();
     }
+    public ActionResult Spector()
+    {
+      return View();
+    }
   }
 }
