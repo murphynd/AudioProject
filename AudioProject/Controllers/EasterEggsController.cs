@@ -12,17 +12,22 @@ using System;
 
 namespace AudioProject.Controllers
 {
-  public class NatalieController : Controller
+  public class EasterEggController : Controller
   {
     private readonly AudioProjectContext _db;
 
-    public NatalieController(AudioProjectContext db)
+    public EasterEggController(AudioProjectContext db)
     {
       _db = db;
+    }
+
+    public ActionResult Upload()
+    {
+      return View();
     }
     public ActionResult Index()
     {
       return View();
     }
-  }
+   }
 }
