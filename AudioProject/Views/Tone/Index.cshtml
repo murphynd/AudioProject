@@ -11,13 +11,14 @@
 
 <br><br>
 
-<button id="startsound" class="btn btn-outline-info btn-block">begin audio</button>
+<button id="startsound" class="btn btn-info btn-block">begin audio</button>
 
 <br><br><br>
-
+<canvas id="canvas"></canvas>
+<br>
 <h3 style="text-align:center">select chords</h3>
 <hr> <br>
-<canvas></canvas>
+
 @if (signInManager.IsSignedIn(User))
 {
   var currentUser = await userManager.GetUserAsync(User);
@@ -30,6 +31,7 @@
       <input id="chord-3" value="3" type="radio" name="Chords" />
       <input id="chord-4" value="4" type="radio" name="Chords" />
       <input id="chord-5" value="5" type="radio" name="Chords" />
+      <input id="chord-5" value="6" type="radio" name="Chords" />
 
 
       <ul>
@@ -84,7 +86,7 @@
     <br><br>
     <p>Volume: <span id="volume-output"></span></p>
     <div class="slidecontainer">
-      <input type="range" min="50" max="100" value="80" class="slider" id="volume-wet">
+      <input type="range" min="1" max="10" value="80" class="slider" id="VolumeOutput">
     </div>
     <br>
     <p>Filter: <span id="filter-output"></span></p>
@@ -106,14 +108,14 @@
     <div class="slidecontainer">
       <input type="range" min="20" max="300" value="100" class="slider" id="BPMOutput" name="BPMOutput">
     </div>
-    <br>
-    <p>@Html.Label("Name Your Track")</p>
-    @Html.TextBoxFor(model=>model.Name)
+    <br><br>
+    <p style="text-align:center">Name Your Track</p>
+    @Html.TextBoxFor(model=>model.Name, null, new { @class="form-control"})<br> 
     <div>
-      <label>Save to My Library</label>
-      <input type="submit" value="Add New Sound" class="submit" />
+    
+      
+      <input type="submit" value="Save to Library" class="btn btn-info btn-block" />
     </div>
   }
 }
 
-<p id="mute" data-muted="false" class="btn btn-outline-dark btn-block">mute</p>

@@ -20,7 +20,7 @@
 <canvas></canvas>
 @if (signInManager.IsSignedIn(User))
 {
-  <p>Edit @Html.DisplayFor(model => model.Name)</p>
+  <h1>Title: @Html.DisplayFor(model => model.Name)</h1>
   var currentUser = await userManager.GetUserAsync(User);
   @using (Html.BeginForm())
   {

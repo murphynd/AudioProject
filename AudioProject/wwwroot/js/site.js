@@ -1,5 +1,20 @@
 ﻿window.onload = function(){
 
+  var canvas = document.getElementById("canvas");
+  canvas.width = 1100;
+  canvas.height = 250;
+  var ctx = canvas.getContext("2d");
+
+  var WIDTH = canvas.width;
+  var HEIGHT = canvas.height;
+
+  var bufferLength = 512;
+
+  var dataArray = new Uint8Array(128);
+  var barWidth = (WIDTH / bufferLength) * 2.5;
+  var barHeight;
+  var x = 0;
+
 // start the sound and stuff  
 var context = new AudioContext();
 
@@ -29,6 +44,14 @@ let filter = new Tone.Filter(5000, "lowpass");
 
 function filterWet(wetAmount) {
   filter.frequency.value = wetAmount;
+}
+
+// Volume FIX THIS
+let volume = new Tone.Volume(-5);
+
+function volumeWet(wetAmount) {
+  console.log(wetAmount * -1);
+  volume.volume = wetAmount * -1;
 }
 
 
@@ -130,6 +153,7 @@ class Instrument {
 
   startSound.addEventListener('click', function() {
     context.resume().then(() => {
+
     
       if (switchSound === "false"){
         switchSound = "true";
@@ -169,6 +193,10 @@ class Instrument {
       delayWet($("#DelayOutput").val()); 
       $('span#delay-output').text($("#DelayOutput").val());
     });
+    $("#VolumeOutput").on('input', function() {
+      volumeWet($("#VolumeOutput").val()); 
+      $('span#volume-output').text($("#VolumeOutput").val());
+    });
     
 
     function updateBPM(speed) {
@@ -176,8 +204,8 @@ class Instrument {
     }
           const $inputs = document.querySelectorAll('input'),
           chords = [
-            'G0 C1 E1 D1 B1', 'F0 A1 C1 E1 F1', 'G0 B1 D1 F2 D2', 
-            'D1 F1 A1 C2 D0', 'E1 G1 B1'
+            'G0 C1 E1 C0 B1', 'F0 A1 C1 E1 F1', 'G0 B1 D1 G2 D2', 
+            'D1 F1 A1 C2 D0', 'E1 F1 E1 C0 B1 C2 B1 G1 C0', 
           ].map(formatChords);
 
           var chordIdx = 0,
@@ -192,11 +220,41 @@ class Instrument {
       function handleChord(valueString) {
       chordIdx = parseInt(valueString) - 1;
       }
+
+      let analyser = new Tone.Analyser();
       
-      inst.gain.chain(reverb, filter, delay, Tone.Destination);
+      inst.gain.chain(reverb, filter, delay, analyser, volume, Tone.Destination);
       Tone.Transport.scheduleRepeat(onRepeat, '16n');
       
       Tone.Transport.start();
+
+
+      function renderFrame() {
+        requestAnimationFrame(renderFrame);
+  
+        x = 0;
+  
+        dataArray = analyser.getValue().map(x => x + 200);
+        
+  
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  
+        for (var i = 0; i < bufferLength; i++) {
+          barHeight = dataArray[i];
+          
+          var b = 222;
+          var g = 192;
+          var r = barHeight + (100 * (i/bufferLength));
+  
+          ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+          ctx.fillRect(x, HEIGHT - (barHeight*1.4), barWidth, barHeight);
+  
+          x += barWidth + 1;
+        }
+      }
+
+      renderFrame();
 
       function onRepeat(time) {
       let chord = chords[chordIdx],
@@ -212,7 +270,7 @@ class Instrument {
           for (let j = 0; j < chord.length; j++){
             let noteOct = chord[j].split('')
                 note = noteOct[0];
-            let oct = (noteOct[1] === "0") ? i + 2 : i + 4;
+            let oct = (noteOct[1] === "0") ? i + 2 : i + 4 ;
             note += oct;
             arr.push(note);
           }
@@ -231,6 +289,8 @@ class Instrument {
             mute.innerHTML = "mute";
           };
         }
+
+        
       }
     });
   })
