@@ -5,20 +5,20 @@
   position: absolute;
   left: -999999px;
 }
-.hiddenOverflow input#chord-1:checked ~ ul label[for=chord-1] {
-  background: tomato;
+.hiddenOverflow input#chord-1:checked ~ ul label[for="chord-1"] {
+  background: lightpink;
 }
-.hiddenOverflow input#chord-2:checked ~ ul label[for=chord-2] {
-  background: tomato;
+.hiddenOverflow input#chord-2:checked ~ ul label[for="chord-2"] {
+  background: lightpink;
 }
-.hiddenOverflow input#chord-3:checked ~ ul label[for=chord-3] {
-  background: tomato;
+.hiddenOverflow input#chord-3:checked ~ ul label[for="chord-3"] {
+  background: lightpink;
 }
-.hiddenOverflow input#chord-4:checked ~ ul label[for=chord-4] {
-  background: tomato;
+.hiddenOverflow input#chord-4:checked ~ ul label[for="chord-4"] {
+  background: lightpink;
 }
-.hiddenOverflow input#chord-5:checked ~ ul label[for=chord-5] {
-  background: tomato;
+.hiddenOverflow input#chord-5:checked ~ ul label[for="chord-5"] {
+  background: lightpink;
 }
 .hiddenOverflow ul {
   list-style: none;

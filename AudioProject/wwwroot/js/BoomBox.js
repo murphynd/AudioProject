@@ -1,3 +1,6 @@
+
+  
+
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioCtx;
 
@@ -8,6 +11,7 @@ let track;
 const playButton = document.querySelector('.tape-controls-play');
 
 // play pause audio
+
 playButton.addEventListener('click', function() {
   if(!audioCtx) {
 		init();
@@ -31,6 +35,7 @@ playButton.addEventListener('click', function() {
 	this.setAttribute( 'aria-checked', state ? "false" : "true" );
 
 }, false);
+
 
 // if track ends
 audioElement.addEventListener('ended', () => {
