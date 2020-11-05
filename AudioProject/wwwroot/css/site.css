@@ -1,10 +1,10 @@
 ﻿body {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .nav-item {
-  margin-left:10px !important;
-  margin-right:10px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
 }
 
 li {
@@ -12,22 +12,22 @@ li {
 }
 
 .full-width {
-  width:100%;
+  width: 100%;
 }
 
 .list-detail {
-  color:red;
-  font-size:25px;
+  color: red;
+  font-size: 25px;
 }
 
 a:hover {
-  color:black;
-  font-weight:900;
-  text-decoration:none;
+  color: black;
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .intro {
-  font-size:20px;
+  font-size: 20px;
 }
 
 .slidecontainer {
@@ -41,13 +41,13 @@ a:hover {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 .slider:hover {
   opacity: 1;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .slider::-webkit-slider-thumb {
