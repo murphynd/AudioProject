@@ -1,8 +1,5 @@
-// instigate our audio context
-
-// for cross browser
 const AudioContext = window.AudioContext || window.webkitAudioContext;
-let audioCtx2;
+let audioCtx;
 
 // load some sound
 const audioElement = document.querySelector('audio');
@@ -12,13 +9,13 @@ const playButton = document.querySelector('.tape-controls-play');
 
 // play pause audio
 playButton.addEventListener('click', function() {
-  if(!audioCtx2) {
+  if(!audioCtx) {
 		init();
 	}
 
 	// check if context is in suspended state (autoplay policy)
-	if (audioCtx2.state === 'suspended') {
-		audioCtx2.resume();
+	if (audioCtx.state === 'suspended') {
+		audioCtx.resume();
 	}
 
 	if (this.dataset.playing === 'false') {
@@ -43,11 +40,11 @@ audioElement.addEventListener('ended', () => {
 
 function init() {
 
-	audioCtx2 = new AudioContext();
-	track = audioCtx2.createMediaElementSource(audioElement);
+	audioCtx = new AudioContext();
+	track = audioCtx.createMediaElementSource(audioElement);
 
 	// volume
-	const gainNode = audioCtx2.createGain();
+	const gainNode = audioCtx.createGain();
 
 	const volumeControl = document.querySelector('[data-action="volume"]');
 	volumeControl.addEventListener('input', function() {
@@ -56,7 +53,7 @@ function init() {
 
 	// panning
 	const pannerOptions = { pan: 0 };
-	const panner = new StereoPannerNode(audioCtx2, pannerOptions);
+	const panner = new StereoPannerNode(audioCtx, pannerOptions);
 
 	const pannerControl = document.querySelector('[data-action="panner"]');
 	pannerControl.addEventListener('input', function() {
@@ -64,5 +61,5 @@ function init() {
 	}, false);
 
 	// connect our graph
-	track.connect(gainNode).connect(panner).connect(audioCtx2.destination);
+	track.connect(gainNode).connect(panner).connect(audioCtx.destination);
 }

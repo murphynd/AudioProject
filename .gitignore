@@ -6,3 +6,4 @@ bin/
 .DS_Store
 appsettings.json/
 Migrations/
+node_modules/

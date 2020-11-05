@@ -21,13 +21,37 @@ li {
 }
 
 a:hover {
-  color: black;
-  font-weight: 900;
+  color: pink;
+  font-weight: 500;
   text-decoration: none;
 }
 
 .intro {
   font-size: 20px;
+}
+
+.bgimage {
+  display:block;
+  padding-top:150px;
+}
+
+.jumbotron {
+  margin-top:50px;
+  background-color:#E9EFF1 !important;
+}
+
+a {
+color:#00A6DD;
+}
+
+a:hover {
+  transition-duration:0.4s;
+}
+
+#intro-button:hover {
+  padding:10px 15px;
+  background-color: #00A6DD;
+  color:white;
 }
 
 .slidecontainer {

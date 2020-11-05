@@ -46,7 +46,7 @@ namespace AudioProject.Controllers
       return View(thisSound);
     }
     [HttpPost]
-    public async Task<ActionResult> Edit(Sounds sound)
+     public ActionResult Edit(Sounds sound)
     {
       //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       // var currentUser = await _userManager.FindByIdAsync(userId);
