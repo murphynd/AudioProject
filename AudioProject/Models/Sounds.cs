@@ -6,6 +6,7 @@ namespace AudioProject.Models
   public class Sounds
   {
     public int SoundsId { get; set; }
+    public string Name { get; set; }
     public string Chords { get; set; }
     public string SynthType { get; set; }
     public string OscillatorType { get; set; }

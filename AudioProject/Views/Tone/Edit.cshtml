@@ -20,6 +20,7 @@
 <canvas></canvas>
 @if (signInManager.IsSignedIn(User))
 {
+  <p>Edit @Html.DisplayFor(model => model.Name)</p>
   var currentUser = await userManager.GetUserAsync(User);
   @using (Html.BeginForm())
   {
@@ -107,11 +108,9 @@
       <input type="range" min="20" max="300" value="100" class="slider" id="BPMOutput" name="BPMOutput">
     </div>
     <br>
-    <p>@Html.Label("Name Your Track")</p>
-    @Html.TextBoxFor(model=>model.Name)
     <div>
       <label>Save to My Library</label>
-      <input type="submit" value="Add New Sound" class="submit" />
+      <input type="submit" value="Edit my Sound" class="submit" />
     </div>
   }
 }

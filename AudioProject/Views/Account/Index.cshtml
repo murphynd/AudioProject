@@ -1,12 +1,10 @@
 @{
   Layout = "_Layout";
 }
-@model AudioProject.Models.Sounds;
+
+@using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
 @using AudioProject.Models
-@inject SignInManager<ApplicationUser> signInManager
-@inject UserManager<ApplicationUser> userManager
-@using System.Security.Claims
 
 <div class="container">
   <div class="jumbotron">
@@ -16,12 +14,10 @@
       <p>Hello @User.Identity.Name!</p>
       <h4>My library of sounds</h4>
       <hr>
-//list out sounds that match your user id from the sounds database
-@foreach( in model)
-
-
-
-      <p>@Html.ActionLink("Listen", "index", "Grant")</p>
+      @foreach( var Sound in Model)
+      {
+        <p>@Html.ActionLink($"{Sound.Name}","Edit", "Tone", new {id = Sound.SoundsId})</p>
+      }
       @using (Html.BeginForm("LogOff", "Account"))
       { <input type="submit" class="btn btn-default" value="Log out" />
       }

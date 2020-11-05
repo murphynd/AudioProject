@@ -40,5 +40,17 @@ namespace AudioProject.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult Edit(int id)
+    {
+      var thisSound = _db.Sounds.FirstOrDefault(Sounds => Sounds.SoundsId == id);
+      return View(thisSound);
+    }
+    [HttpPost]
+    public ActionResult Edit(Sounds sound)
+    {
+      _db.Entry(sound).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
