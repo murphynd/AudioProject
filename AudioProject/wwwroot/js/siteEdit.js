@@ -1,4 +1,15 @@
-﻿window.onload = function(){
+window.onload = function(){
+
+  // Initial Values for inputs
+
+  let $initialAttack = $('#attack').val();
+  let $initialDecay = $('#decay').val();
+  let $initialSustain = $('#sustain').val();
+  let $initialRelease = $('#release').val();
+  let $initialFilter = $('#FilterOutput').val();
+  let $initialReverb = $('#ReverbOutput').val();
+  let $initialDelay = $('#DelayOuput').val();
+
 
   var canvas = document.getElementById("canvas");
   canvas.width = 1100;
@@ -171,6 +182,12 @@ class Instrument {
     
       if (switchSound === "false"){
         switchSound = "true";
+
+    updateBPM($initialBPM);
+    reverbWet($initialReverb);
+    filterWet($initialFilter);
+    delayWet($initialDelay);
+
     
     // receiving inputs
     let $synthType = $("#SynthType").val();
@@ -179,7 +196,11 @@ class Instrument {
 
     let inst = new Instrument();
     inst.updateSynthType($synthType);
-    inst.updateOscillatorType($oscillatorType, $oscillatorPartials)
+    inst.updateOscillatorType($oscillatorType, $oscillatorPartials);
+    inst.updateADSR("attack", $initialAttack);
+    inst.updateADSR("decay", $initialDecay);
+    inst.updateADSR("sustain", $initialSustain);
+    inst.updateADSR("release", $initialRelease);
 
     $("#SynthType").change(function() {
       inst.updateSynthType($("#SynthType").val());

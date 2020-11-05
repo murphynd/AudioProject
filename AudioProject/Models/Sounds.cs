@@ -15,6 +15,10 @@ namespace AudioProject.Models
     public string DelayOutput { get; set; }
     public string ReverbOutput { get; set; }
     public string BPMOutput { get; set; }
+    public string attack { get; set; }
+    public string decay { get; set; }
+    public string sustain { get; set; }
+    public string release { get; set; }
 
     public virtual ApplicationUser User { get; set; }
   }

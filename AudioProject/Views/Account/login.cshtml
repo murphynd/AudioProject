@@ -11,14 +11,15 @@
     <hr />
     @using (Html.BeginForm())
     {
-      @Html.LabelFor(m => m.Email)
-      @Html.TextBoxFor(m => m.Email)
+      <p>Email: </p>
+      @Html.TextBoxFor(m => m.Email, new { @class = "form-control"})<br>
 
-      @Html.LabelFor(m => m.Password)
-      @Html.PasswordFor(m => m.Password)
+      <p>Password: </p>
+      @Html.PasswordFor(m => m.Password, new { @class = "form-control"})<br>
 
-      <input type="submit" value="Log in" class="btn btn-default" />
+      <input type="submit" value="Log in" class="btn btn-info btn-block" />
     }
-    <p>@Html.ActionLink("Register", "Register")</p>
+    <p style="color:red">need to register?</p>
+    <p>@Html.ActionLink("Register", "Register", null, null, new { @class = "btn btn-outline-info btn-block"})</p>
   </div>
 </div>
