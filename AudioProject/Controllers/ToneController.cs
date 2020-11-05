@@ -46,11 +46,14 @@ namespace AudioProject.Controllers
       return View(thisSound);
     }
     [HttpPost]
-    public ActionResult Edit(Sounds sound)
+    public async Task<ActionResult> Edit(Sounds sound)
     {
-      _db.Entry(sound).State = EntityState.Modified;
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      // var currentUser = await _userManager.FindByIdAsync(userId);
+      // sound.User = currentUser;
+      // _db.Entry(sound).State = EntityState.Modified;
+      // _db.SaveChanges();
+      return Redirect("~/Account");
     }
   }
 }

@@ -103,3 +103,8 @@ a:hover {
   background: black;
   cursor: pointer;
 }
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}

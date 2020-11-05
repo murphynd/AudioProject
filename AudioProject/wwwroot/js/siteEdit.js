@@ -165,10 +165,10 @@ class Instrument {
   }
 }
 
-    $('span#bpm-output').text($("#BPMOutput").val());
-    $('span#delay-output').text($("#DelayOutput").val());
-    $('span#filter-output').text($("#FilterOutput").val());
-    $('span#reverb-output').text($("#ReverbOutput").val() - 3);
+    $('#bpm-output').text($("#BPMOutput").val());
+    $('#delay-output').text($("#DelayOutput").val());
+    $('#filter-output').text($("#FilterOutput").val());
+    $('#reverb-output').text($("#ReverbOutput").val() - 3);
 
   startSound.addEventListener('click', function() {
     context.resume().then(() => {
