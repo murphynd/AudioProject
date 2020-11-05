@@ -12,15 +12,16 @@
     <hr />
     @if (User.Identity.IsAuthenticated)
     {
-      <p>Hello @User.Identity.Name!</p>
-      <h4>My library of sounds</h4>
+      <p>Hello @User.Identity.Name</p>
+      <h2>Welcome to your Library</h2>
       <hr>
       @foreach( var Sound in Model)
       {
-        <p>@Html.ActionLink($"{Sound.Name}","Edit", "Tone", new {id = Sound.SoundsId, @class="btn"})</p>
+        <p>@Html.ActionLink($"{Sound.Name}","Edit", "Tone", new {id = Sound.SoundsId}, new {@class = "btn btn-outline-primary"})</p>
       }
+      <hr>
       @using (Html.BeginForm("LogOff", "Account"))
-      { <input type="submit" class="btn btn-default" value="Log out" />
+      { <input type="submit" class="btn btn-outline-dark" value="Log out" />
       }
     }
     else

@@ -29,7 +29,7 @@ namespace AudioProject.Controllers
     {
       return View();
     }
-    
+
     [HttpPost]
     public async Task<ActionResult> Index(Sounds sound)
     {
@@ -46,13 +46,13 @@ namespace AudioProject.Controllers
       return View(thisSound);
     }
     [HttpPost]
-     public ActionResult Edit(Sounds sound)
+    public ActionResult Edit(Sounds sound)
     {
       //   var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       // var currentUser = await _userManager.FindByIdAsync(userId);
       // sound.User = currentUser;
-      // _db.Entry(sound).State = EntityState.Modified;
-      // _db.SaveChanges();
+      _db.Entry(sound).State = EntityState.Modified;
+      _db.SaveChanges();
       return Redirect("~/Account");
     }
   }

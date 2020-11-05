@@ -31,27 +31,31 @@ a:hover {
 }
 
 .bgimage {
-  display:block;
-  padding-top:150px;
+  display: block;
+  padding-top: 150px;
 }
 
 .jumbotron {
-  margin-top:50px;
-  background-color:#E9EFF1 !important;
+  margin-top: 50px;
+  background-color: #e9eff1 !important;
 }
 
 a {
-color:#00A6DD;
+  color: #5bc0de;
 }
 
 a:hover {
-  transition-duration:0.4s;
+  transition-duration: 0.3s;
+}
+
+#intro-button {
+  padding: 10px 15px;
 }
 
 #intro-button:hover {
-  padding:10px 15px;
-  background-color: #00A6DD;
-  color:white;
+  padding: 10px 15px;
+  background-color: #5bc0de;
+  color: white;
 }
 
 .slidecontainer {
@@ -129,6 +133,5 @@ a:hover {
 }
 
 .wrapper {
-  min-height: 100%;
-  margin-bottom: -50px;
+  min-height: 35%;
 }
