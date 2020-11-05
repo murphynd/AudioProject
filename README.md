@@ -1,3 +1,11 @@
+<!-- To Do list
+- activate volume
+- activate Tone/Edit/yoursong to play the sound you saved
+- update Readme
+- about section
+- Make home index a show hide of the tones Index.
+-->
+
 <br>
 <p align="center">
   <u><big>|| <b>Audio Project | Team Week 2020</b> ||</big></u>

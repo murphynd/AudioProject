@@ -17,7 +17,7 @@
 
 <h3 style="text-align:center">select chords</h3>
 <hr> <br>
-<canvas></canvas>
+<canvas id="canvas"></canvas>
 @if (signInManager.IsSignedIn(User))
 {
   <h1>Title: @Html.DisplayFor(model => model.Name)</h1>
@@ -46,12 +46,7 @@
       <section class="section">
         <span class="select">
           <select id="SynthType" class="form-control" name="SynthType">
-            <option value="Synth" selected>Synth</option>
-            <option value="AMSynth">AMSynth</option>
-            <option value="FMSynth">FMSynth</option>
-            <option value="PolySynth">PolySynth</option>
-            <option value="MonoSynth">MonoSynth</option>
-            <option value="PluckSynth">PluckSynth</option>
+            <option value="@Model.SynthType" selected>@Model.SynthType</option>
           </select>
         </span>
       </section>
@@ -62,10 +57,7 @@
       <section class="section">
         <span class="select">
           <select id="OscillatorType" class="form-control" name="OscillatorType">
-            <option value="triangle">triangle</option>
-            <option value="sawtooth">sawtooth</option>
-            <option value="sine">sine</option>
-            <option value="square">square</option>
+            <option value="@Model.OscillatorType" selected>@Model.OscillatorType</option>
           </select>
         </span>
       </section>
@@ -73,13 +65,7 @@
 
     <div class="field">
       <select id="OscillatorPartials" class="form-control" name="OscillatorPartials">
-        <option value="none">none</option>
-        <option value="2">2</option>
-        <option value="4">4</option>
-        <option value="8">8</option>
-        <option value="16">16</option>
-        <option value="32">32</option>
-        <option value="64">64</option>
+        <option value="@Model.OscillatorPartials" selected>@Model.OscillatorPartials</option>
       </select>
     </div>
     <br><br>
@@ -114,5 +100,3 @@
     </div>
   }
 }
-
-<p id="mute" data-muted="false" class="btn btn-outline-dark btn-block">mute</p>
