@@ -23,10 +23,5 @@ namespace AudioProject.Controllers
     {
       return View();
     }
-    [HttpGet("/About")]
-    public ActionResult About()
-    {
-      return View();
-    }
   }
 }

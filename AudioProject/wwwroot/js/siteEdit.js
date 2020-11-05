@@ -2,15 +2,6 @@ window.onload = function(){
 
   // Initial Values for inputs
 
-  let $initialAttack = $('#attack').val();
-  let $initialDecay = $('#decay').val();
-  let $initialSustain = $('#sustain').val();
-  let $initialRelease = $('#release').val();
-  let $initialFilter = $('#FilterOutput').val();
-  let $initialReverb = $('#ReverbOutput').val();
-  let $initialDelay = $('#DelayOuput').val();
-
-
   var canvas = document.getElementById("canvas");
   canvas.width = 1100;
   canvas.height = 300;
@@ -174,7 +165,10 @@ class Instrument {
   }
 }
 
-
+    $('span#bpm-output').text($("#BPMOutput").val());
+    $('span#delay-output').text($("#DelayOutput").val());
+    $('span#filter-output').text($("#FilterOutput").val());
+    $('span#reverb-output').text($("#ReverbOutput").val() - 3);
 
   startSound.addEventListener('click', function() {
     context.resume().then(() => {
@@ -183,10 +177,11 @@ class Instrument {
       if (switchSound === "false"){
         switchSound = "true";
 
-    updateBPM($initialBPM);
-    reverbWet($initialReverb);
-    filterWet($initialFilter);
-    delayWet($initialDelay);
+    updateBPM($("#BPMOutput").val());
+    reverbWet($("#ReverbOutput").val());
+    filterWet($("#FilterOutput").val());
+    delayWet($("#DelayOutput").val());
+    
 
     
     // receiving inputs
@@ -197,10 +192,10 @@ class Instrument {
     let inst = new Instrument();
     inst.updateSynthType($synthType);
     inst.updateOscillatorType($oscillatorType, $oscillatorPartials);
-    inst.updateADSR("attack", $initialAttack);
-    inst.updateADSR("decay", $initialDecay);
-    inst.updateADSR("sustain", $initialSustain);
-    inst.updateADSR("release", $initialRelease);
+    inst.updateADSR("attack", ($('#attack').val() / 1000));
+    inst.updateADSR("decay", ($('#decay').val() / 100));
+    inst.updateADSR("sustain", ($('#sustain').val() / 1000));
+    inst.updateADSR("release", ($('#release').val() / 100));
 
     $("#SynthType").change(function() {
       inst.updateSynthType($("#SynthType").val());
@@ -213,24 +208,24 @@ class Instrument {
     });
     $("#BPMOutput").on('input', function() {
       updateBPM($("#BPMOutput").val());
-      $('span#bpm-output').text($("#BPMOutput").val());
+      $('span#bpm-output').html($("#BPMOutput").val());
     });
     $("#ReverbOutput").on('input', function() {
       reverbWet($("#ReverbOutput").val());
-      $('span#reverb-output').text($("#ReverbOutput").val() - 3);
+      $('span#reverb-output').html($("#ReverbOutput").val() - 3);
     });
     $("#FilterOutput").on('input', function() {
       filterWet($("#FilterOutput").val()); 
-      $('span#filter-output').text($("#FilterOutput").val());
+      $('span#filter-output').html($("#FilterOutput").val());
 
     });
     $("#DelayOutput").on('input', function() {
       delayWet($("#DelayOutput").val()); 
-      $('span#delay-output').text($("#DelayOutput").val());
+      $('span#delay-output').html($("#DelayOutput").val());
     });
     $("#VolumeOutput").on('input', function() {
       volumeAmount($("#VolumeOutput").val());
-      $('#span#volume-output').text($("#VolumeOutput").val());
+      $('#span#volume-output').html($("#VolumeOutput").val());
     })
 
 

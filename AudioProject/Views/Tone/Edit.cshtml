@@ -10,15 +10,14 @@
 @inject UserManager<ApplicationUser> userManager
 
 <br><br>
+<h1 style="text-align:center" class="form-control">Your Sound: @Html.DisplayFor(model => model.Name)</h1><br>
 
-<button id="startsound" class="btn btn-outline-info btn-block">begin audio</button>
+<button id="startsound" class="btn btn-info btn-block">begin audio</button>
 
 <br><br><br>
-<hr> <br>
 <canvas id="canvas"></canvas>
 @if (signInManager.IsSignedIn(User))
 {
-  <h1 style="text-align:center">Your Sound: @Html.DisplayFor(model => model.Name)</h1><hr style="background-color:black; width:50%"><br>
   var currentUser = await userManager.GetUserAsync(User);
   @using (Html.BeginForm())
   {
@@ -65,6 +64,12 @@
         <span class="select">
           <select id="SynthType" class="form-control" name="SynthType">
             <option value="@Model.SynthType" selected>@Model.SynthType</option>
+            <option value="Synth" selected>Synth</option>
+            <option value="MembraneSynth">MembraneSynth</option>
+            <option value="AMSynth">AMSynth</option>
+            <option value="FMSynth">FMSynth</option>
+            <option value="MonoSynth">MonoSynth</option>
+            <option value="PluckSynth">PluckSynth</option> 
           </select>
         </span>
       </section>
@@ -76,6 +81,10 @@
         <span class="select">
           <select id="OscillatorType" class="form-control" name="OscillatorType">
             <option value="@Model.OscillatorType" selected>@Model.OscillatorType</option>
+            <option value="triangle">triangle</option>
+            <option value="sawtooth">sawtooth</option>
+            <option value="sine">sine</option>
+            <option value="square">square</option>
           </select>
         </span>
       </section>
@@ -84,26 +93,33 @@
     <div class="field">
       <select id="OscillatorPartials" class="form-control" name="OscillatorPartials">
         <option value="@Model.OscillatorPartials" selected>@Model.OscillatorPartials</option>
+        <option value="none">none</option>
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="16">16</option>
+        <option value="32">32</option>
+        <option value="64">64</option>
       </select>
     </div>
     <br><br>
     <br>
-    <p>Filter: <span id="filter-output"></span></p>
+    <p>Filter: <span style="color:blue" id="filter-output"></span></p>
     <div class="slidecontainer">
       <input type="range" min="20" max="10000" value="@Model.FilterOutput" class="slider" id="FilterOutput" name="FilterOutput">
     </div>
     <br>
-    <p>Delay: <span id="delay-output"></span></p>
+    <p>Delay: <span style="color:blue" id="delay-output"></span></p>
     <div class="slidecontainer">
       <input type="range" min="0" max="100" value="@Model.DelayOutput" class="slider" id="DelayOutput" name="DelayOutput">
     </div>
     <br>
-    <p>Room Size: <span id="reverb-output"></span></p>
+    <p>Room Size: <span style="color:blue" id="reverb-output"></span></p>
     <div class="slidecontainer">
       <input type="range" min="3" max="200" value="@Model.ReverbOutput" class="slider" id="ReverbOutput" name="ReverbOutput">
     </div>
     <br>
-    <p>BPM: <span id="bpm-output"></span></p>
+    <p>BPM: <span style="color:blue" id="bpm-output"></span></p>
     <div class="slidecontainer">
       <input type="range" min="20" max="300" value="@Model.BPMOutput" class="slider" id="BPMOutput" name="BPMOutput">
     </div>
